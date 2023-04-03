@@ -106,7 +106,7 @@ void assertEqual_( const char* lhs, const char* rhs, const char *slhs, const cha
 char * AllocateAligned4( unsigned long size )
 {
     char *s = new char[ size + 4 ];   //allocate on stack to get 4 byte alignment
-    return (char*)((long)(s-1) & (~0x03L)) + 4;
+    return (char*)(void*)((long long)(s-1) & (~0x03L)) + 4;
 }
 
 // allocate a 4 byte aligned copy of s
